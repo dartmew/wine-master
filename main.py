@@ -1,5 +1,6 @@
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from winery_helpers import get_age
 
 
 env = Environment(
@@ -10,7 +11,7 @@ env = Environment(
 template = env.get_template('template.html')
 
 rendered_page = template.render(
-    #Сюда вписываем переменные и присваиваем значения им
+    age = get_age()
 )
 
 with open('index.html', 'w', encoding='utf8') as file:
